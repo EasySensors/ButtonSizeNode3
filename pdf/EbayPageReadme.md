@@ -30,6 +30,6 @@ If you are familiar with Arduino boards, the ButtonSize Node is Arduino pro Mini
 
  
 ## Package Content:
--	The Controller board 1 pcs  
+-	The Controller board in Ivory plastic enclosure 1 pcs 
 
   

@@ -1,9 +1,9 @@
 
 
-![enter image description here](https://github.com/EasySensors/ButtonSizeNode/blob/master/pics/buttonsize1.jpg?raw=true)
-![enter image description here](https://github.com/EasySensors/ButtonSizeNode/blob/master/pics/buttonsize2.jpg?raw=true)
+![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/buttonsize2cr.jpg?raw=true)
+![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/ButtonSizeNode2boxCr.jpg?raw=true)
 
-**The Button Size Node is a low cost wireless Arduino IDE compatible (the Atmel ATMega328P 8MHz) microcontroller with RFM 69 HW(CW) radio on board and few other nice additions.** 
+**The Button Size Node 2 is a low cost wireless Arduino IDE compatible (the Atmel ATMega328P 8MHz) microcontroller with RFM 69 HW(CW) radio on board and few other nice additions.** 
 ------------------------------------------------------------------------
 
 Best sutable for Home Automation, IOT. Could be used as core board for radio controlling any DIY project. You may think of it as Arduino Pro Mini plus all the items in the picture below::
@@ -12,7 +12,8 @@ Best sutable for Home Automation, IOT. Could be used as core board for radio con
 
 ## Specification: ##
  - Dimensions 42.2mm x 20.9mm
- - Sleep current consumption 10 - 12 uA
+ - Wide operating temperature range. Tested -20 +40 Celsius
+ - Sleep current consumption 9 - 12 uA
  - Temperature and humidity sensor Si7021 
  - High Accuracy Temperature Sensor ±0.4 °C (max), –10 to 85 °C
  - Precision Relative Humidity Sensor ± 3% RH (max), 0–80% RH
@@ -20,11 +21,11 @@ Best sutable for Home Automation, IOT. Could be used as core board for radio con
  - Authentication security - Atmel ATSHA204A Crypto Authentication Chip
  - External JDEC EPROM
  - Dualoptiboot bootloader. Implements over the air (OTA) firmware update ability
- - RFM69-HW (high power version) or CW (low power consumption version) 433 MHz Radio transceiver
+ - RFM69-HW (high power version) or CW (low power consumption version) 915, 868 or 433 MHz Radio transceiver
  - Battery voltage sensor (via divider)
- - Supply voltage up to 6.5 Volts
+ - Supply voltage  3.5-10 Volts
  - The Digital and Analog pins are 3.3 volts
- - Battery connector CR2032 240mAh
+ - Powered by two CR2032 batteries in series with high-efficiency power converter (3.5-10V). 
  - FTDI  header for programming
  - You can cut with scissors, sensors and battery holder part, if you need just controller and radio
 
@@ -93,8 +94,9 @@ Connect the Node to FTDI USB adaptor, Select Pro Mini 8MHz board in Arduino IDE 
 
 The board is created by  [Koresh](https://www.openhardware.io/user/143/projects/Koresh)
 
-![enter image description here](https://github.com/EasySensors/ButtonSizeNode/blob/master/pics/bs1.jpg?raw=true)
-![enter image description here](https://github.com/EasySensors/ButtonSizeNode/blob/master/pics/bs2.jpg?raw=true)
+![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/buttonsize2.jpg?raw=true)
+![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/ButtonSizeNode2box.jpg?raw=true)
+![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/ButtonSizeNode2box2.jpg?raw=true)
 
 
 >For schematics lovers:

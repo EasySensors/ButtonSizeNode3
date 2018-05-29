@@ -25,10 +25,11 @@ If you are familiar with Arduino boards, the ButtonSize Node is Arduino pro Mini
 
 **Enclosure sold separately**
 ![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/enclosure.jpg?raw=true)
+![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/ButtonSizeNode2box2.jpg?raw=true)
 
 ![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/buttonsize2.jpg?raw=true)
 ![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/buttonsize2cw.jpg?raw=true)
-![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/ButtonSizeNode2box2.jpg?raw=true)
+
 
  
 ## Package Content:

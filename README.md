@@ -99,7 +99,6 @@ The board is created by  [Koresh](https://www.openhardware.io/user/143/projects/
 
 ![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/buttonsize2.jpg?raw=true)
 ![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/buttonsize2cw.jpg?raw=true)
-![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/enclosure.jpg?raw=true)
 ![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/ButtonSizeNode2box2.jpg?raw=true)
 
 

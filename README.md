@@ -1,9 +1,7 @@
-
-
 ![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/buttonsize2-cwCr.jpg?raw=true)
-![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/buttonsize2cr.jpg?raw=true)
 ![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/buttonsize2_noradio_back2cr.jpg?raw=true)
-![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/enclosure-cr.jpg?raw=true)
+![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/buttonsize2cr.jpg?raw=true)
+
 
 **The Button Size Node 2 is a low cost wireless Arduino IDE compatible (the Atmel ATMega328P 8MHz) microcontroller with RFM 69 HW(CW) radio on board and few other nice additions.** 
 ------------------------------------------------------------------------
@@ -95,6 +93,9 @@ Connect the Node to FTDI USB adaptor, Select Pro Mini 8MHz board in Arduino IDE 
 
 
 The board is created by  [Koresh](https://www.openhardware.io/user/143/projects/Koresh)
+
+**Enclosure**
+![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/enclosure.jpg?raw=true)
 
 ![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/buttonsize2.jpg?raw=true)
 ![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/buttonsize2cw.jpg?raw=true)

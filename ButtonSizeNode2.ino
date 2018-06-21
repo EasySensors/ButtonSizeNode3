@@ -107,7 +107,7 @@ void swarm_report()
   char VIS_LIGHT[10];
 
 
-  lightMeter.begin(); // need for correct wake up
+  lightMeter.begin(BH1750::ONE_TIME_LOW_RES_MODE); // need for correct wake up
   lux = lightMeter.readLightLevel();// Get Lux value
   // dtostrf(); converts float into string
   long d = (long)(lux - oldLux);

@@ -143,28 +143,21 @@ void swarm_report()
     oldTemp = temp;
   }
 
-
   // Get the battery Voltage
   int sensorValue = analogRead(BATTERY_SENSE_PIN);
-  // 1M, 470K divider across battery and using internal ADC ref of 1.1V1
-  // ((1e6+470e3)/470e3)*1.1 = Vmax = 3.44 Volts
-  /* The MySensors Lib uses internal ADC ref of 1.1V which means analogRead of the pin connected to 470kOhms Battery Devider reaches  
-   * 1023 when voltage on the divider is around 3.44 Volts. 2.5 volts is equal to 750. 2 volts is equal to 600. 
-   * RFM 69 CW works stable up to 2 volts. Assume 2.5 V is 0% and 1023 is 100% battery charge    
-   * RFM 69 HCW works stable up to 2.5 volts (sometimes it can work up to 2.0V). Assume 2.5 V is 0% and 1023 is 100% battery charge  
-   * 3.3V ~ 1023
-   * 3.0V ~ 900
-   * 2.5V ~ 750 
-   * 2.0V ~ 600
+  /* 1M, 470K divider across batteries
+   * 610 ~ 100 % is close to 6.1 V
+   * 400 ~ 0 % is close to 4V
    */
 
 #ifdef  MY_IS_RFM69HW
-  int batteryPcnt = (sensorValue - 750)  / 1.5;
+  int batteryPcnt = (sensorValue - 460)  / 1.4; // RFM 69 HCW  dies when 2 batteries combined are 4.6 Volts
 #else
-  int batteryPcnt = (sensorValue - 600)  / 3;
+  int batteryPcnt = (sensorValue - 400)  / 2; // RFM 69 CW  dies when 2 batteries combined are 4 Volts
 #endif
+
   
-  batteryPcnt = batteryPcnt > 0 ? batteryPcnt:0; // Cut down negative values. Just in case the battery goes below 2V (2.5V) and the node still working. 
+  batteryPcnt = batteryPcnt > 0 ? batteryPcnt:0; // Cut down negative values. Just in case the battery goes below 4V and the node still working. 
   batteryPcnt = batteryPcnt < 100 ? batteryPcnt:100; // Cut down more than "100%" values. In case of ADC fluctuations. 
 
   if (oldBatteryPcnt != batteryPcnt ) {
@@ -172,6 +165,7 @@ void swarm_report()
     sendBatteryLevel(batteryPcnt);
     oldBatteryPcnt = batteryPcnt;
   }
+
 }
 
 void before() {

@@ -1,9 +1,9 @@
-![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/buttonsize2-cwCr.jpg?raw=true)
-![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/buttonsize2_noradio_back2cr.jpg?raw=true)
-![enter image description here](https://github.com/EasySensors/ButtonSizeNode2/blob/master/pics/buttonsize2cr.jpg?raw=true)
+![enter image description here](https://github.com/EasySensors/ButtonSizeNode3/blob/master/pics/BS3_LITE_TOP.jpg?raw=true)
+![enter image description here](https://github.com/EasySensors/ButtonSizeNode3/blob/master/pics/BS3_LITE_BOTTOM_RADIO.jpg?raw=true)
+![enter image description here](https://github.com/EasySensors/ButtonSizeNode3/blob/master/pics/BS3_LITE_TOP.jpg?raw=true)
 
 
-**The Button Size Node 2 is a low cost wireless Arduino IDE compatible (the Atmel ATMega328P 8MHz) microcontroller with RFM 69 HW(CW) radio on board and few other nice additions.** 
+**The Button Size Node 3 is a low cost wireless Arduino IDE compatible (the Atmel ATMega328P 8MHz) microcontroller with LoRa RFM 95 or RFM 69 HW(CW) radio on board and few other nice additions.** 
 ------------------------------------------------------------------------
 
 Best sutable for Home Automation, IOT. Could be used as core board for radio controlling any DIY project. You may think of it as Arduino Pro Mini plus all the items in the picture below::
@@ -11,7 +11,7 @@ Best sutable for Home Automation, IOT. Could be used as core board for radio con
 ![](https://github.com/EasySensors/ButtonSizeNode/blob/master/pics/replceA.jpg?raw=true)
 
 ## Specification: ##
- - Dimensions 42.2mm x 20.9mm
+ - Dimensions ### 42.2mm x 20.9mm
  - Wide operating temperature range. Tested -20 +40 Celsius
  - Sleep current consumption 9 - 12 uA
  - Temperature and humidity sensor Si7021 

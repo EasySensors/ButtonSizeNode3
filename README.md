@@ -11,7 +11,7 @@ Best sutable for Home Automation, IOT. Could be used as core board for radio con
 ![](https://github.com/EasySensors/ButtonSizeNode/blob/master/pics/replceA.jpg?raw=true)
 
 ## Specification: ##
- - Dimensions XXmm x XXmm
+ - Dimensions 45mm x 23mm
  - Wide operating temperature range. Tested -20 +40 Celsius
  - Sleep current consumption 9 - 12 uA
  - Temperature and humidity sensor Si7021 
@@ -28,7 +28,7 @@ Best sutable for Home Automation, IOT. Could be used as core board for radio con
  - Powered by two CR2032 batteries in series with high-efficiency power converter (3.5-10V). 
  - FTDI  header for programming
  - Footprints 
- - LED connected to pin XX
+ - LED connected to pin 6
  - Reset button
 
 
@@ -38,15 +38,19 @@ Best sutable for Home Automation, IOT. Could be used as core board for radio con
 Arduino Pins|	Description
 ------------|--------------
 A0, A1 |	Available ARDUINO analog GPIO / DIGITAL GPIO
-A6 |	Connected to Battery voltage sensor (via divider)
-A4 |	Connected to si1132 and bh1750 SDA 
-A5 |	Connected to si1132 and bh1750 SCL
+A2 RFM69/95 reset pin
+A6 |	Connected to Battery voltage sensor (via divider) 3M/470k 
+A4 |	Connected to sensors i2c
+A5 |	Connected to sensors i2c
 A3 |	Connected to  ATSHA204A
 D3, D4, D5, D6,D7, D9 |	Available ARDUINO digital GPIO
+D4 | accelerometer interrupt PCINT20 connected 
+D5 | magnetic sensor state\interrupt PCINT21 connected 
+D6 | LED connected
 D8 |	Connected to CS FLASH chip (OTA) M25P40
 MISO, MOSI, SCK, RST |	Connected to ISP header
 ANT |	RFM69 antenna
-Vcc and Bat+ | Unregulated power up to 6.5 Volts
+Vcc and Bat+ | Unregulated power up to 6.5 Volts is connected before DC-DC converter
 Gnd | Ground
 
 

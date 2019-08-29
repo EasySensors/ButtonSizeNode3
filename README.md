@@ -18,7 +18,11 @@ Best sutable for Home Automation, IOT. Could be used as core board for radio con
  - Temperature and humidity sensor Si7021 
  - High Accuracy Temperature Sensor ±0.4 °C (max), –10 to 85 °C
  - Precision Relative Humidity Sensor ± 3% RH (max), 0–80% RH
- - Light sensor BH1750,  spectral responsibility is approximately human eye response.
+ - Light sensor BH1750,  spectral responsibility is approximately human eye response. 
+ - OTA FLASH (W25X40CLNIG)
+ - Accelerometer LIS3DH (full version only)
+ - Barometer BMP280 (full version only)
+ - Magnet sensor SM351LT (full version only)
  - Authentication security - Atmel ATSHA204A Crypto Authentication Chip
  - External JDEC EPROM
  - Dualoptiboot bootloader. Implements over the air (OTA) firmware update ability
@@ -28,7 +32,6 @@ Best sutable for Home Automation, IOT. Could be used as core board for radio con
  - The Digital and Analog pins are 3.3 volts
  - Powered by two CR2032 batteries in series with high-efficiency power converter (3.5-10V). 
  - FTDI  header for programming
- - Footprints 
  - LED connected to pin 6
  - Reset button
 

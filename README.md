@@ -11,6 +11,7 @@ Best sutable for Home Automation, IOT. Could be used as core board for radio con
 ![](https://github.com/EasySensors/ButtonSizeNode/blob/master/pics/replceA.jpg?raw=true)
 
 ## Specification: ##
+ - 4 Layers PCB with larger ground plane improoving range 20-40% range increase according to our field tests.
  - Dimensions 45mm x 23mm
  - Wide operating temperature range. Tested -20 +40 Celsius
  - Sleep current consumption 9 - 12 uA

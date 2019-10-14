@@ -1,4 +1,5 @@
 ![enter image description here](https://github.com/EasySensors/ButtonSizeNode3/blob/master/pics/BS3_LITE_TOP.jpg?raw=true)
+![enter image description here](https://github.com/EasySensors/ButtonSizeNode3/blob/master/pics/BS3_TOP.jpgraw=true)
 ![enter image description here](https://github.com/EasySensors/ButtonSizeNode3/blob/master/pics/BS3_LITE_BOTTOM_RADIO.jpg?raw=true)
 ![enter image description here](https://github.com/EasySensors/ButtonSizeNode3/blob/master/pics/BS3_LITE_BOTTOM.jpg?raw=true)
 
@@ -20,9 +21,9 @@ Best sutable for Home Automation, IOT. Could be used as core board for radio con
  - Precision Relative Humidity Sensor ± 3% RH (max), 0–80% RH
  - Light sensor BH1750,  spectral responsibility is approximately human eye response. 
  - OTA FLASH (W25X40CLNIG)
- - Accelerometer LIS3DH (full version only)
- - Barometer BMP280 (full version only)
- - Magnet sensor SM351LT (full version only)
+ - Accelerometer LIS3DH (**Full version only**)
+ - Barometer BMP280 (Full **version only**)
+ - Magnet sensor SM351LT (**Full version only**)
  - Authentication security - Atmel ATSHA204A Crypto Authentication Chip
  - External JDEC EPROM
  - Dualoptiboot bootloader. Implements over the air (OTA) firmware update ability

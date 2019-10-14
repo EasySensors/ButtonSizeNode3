@@ -25,7 +25,7 @@ Best sutable for Home Automation, IOT. Could be used as core board for radio con
  - Light sensor BH1750,  spectral responsibility is approximately human eye response. 
  - OTA FLASH (W25X40CLNIG)
  - Accelerometer LIS3DH (**Full version only**)
- - Barometer BMP280 (Full **version only**)
+ - Barometer BMP280 (Full **Full version only**)
  - Magnet sensor SM351LT (**Full version only**)
  - Authentication security - Atmel ATSHA204A Crypto Authentication Chip
  - External JDEC EPROM

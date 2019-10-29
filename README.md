@@ -56,7 +56,12 @@ D4 | accelerometer interrupt PCINT20 connected
 D5 | magnetic sensor state\interrupt PCINT21 connected 
 D6 | LED connected
 D8 |	Connected to CS FLASH chip (OTA) M25P40
-MISO, MOSI, SCK, RST |	Connected to ISP header
+D2 |	Connected to RFM 69 DIO0 
+D9 | Connected to RFM 69 Reset pin 
+D10 |	Connected to RFM 69 CS/NSS
+D11 |	MOSI
+D12 |	MISO
+D13 |	SCK
 ANT |	RFM69 antenna
 Vcc and Bat+ | Unregulated power up to 6.5 Volts is connected before DC-DC converter
 Gnd | Ground

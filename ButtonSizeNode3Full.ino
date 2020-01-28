@@ -19,7 +19,7 @@
 
 
 // Enable and select radio type attached
-//#define MY_RADIO_RFM69
+#define MY_RADIO_RFM69
 
 //#define MY_RFM69_FREQUENCY RF69_433MHZ
 //#define MY_RFM69_FREQUENCY RF69_868MHZ
@@ -27,7 +27,7 @@
 
 
 
-#define MY_RADIO_RFM95
+//#define MY_RADIO_RFM95
 //#define MY_RFM95_MODEM_CONFIGRUATION  RFM95_BW125CR45SF128
 #define MY_RFM95_MODEM_CONFIGRUATION RFM95_BW_500KHZ | RFM95_CODING_RATE_4_5, RFM95_SPREADING_FACTOR_2048CPS | RFM95_RX_PAYLOAD_CRC_ON, RFM95_AGC_AUTO_ON // 
 #define MY_RFM95_TX_POWER_DBM (14u)
@@ -142,37 +142,32 @@ void blink_led() {
 void battery_report() {
   //---------------BATTERY REPORTING START
   static int oldBatteryPcnt = 0;
+  int batteryPcnt;
+
   // Get the battery Voltage
   int sensorValue = analogRead(BATTERY_SENSE_PIN);
-  /* 1M, 470K divider across battery and using internal ADC ref of 1.1V1
-    // ((1e6+470e3)/470e3)1.1 = Vmax = 3.44 Volts
-    // The MySensors Lib uses internal ADC ref of 1.1V which means analogRead of the pin connected to 470kOhms Battery Devider reaches
-    //1023 when voltage on the divider is around 3.44 Volts. 2.5 volts is equal to 750. 2 volts is equal to 600.
-    RFM 69 CW works stable up to 2 volts. Assume 2.5 V is 0% and 1023 is 100% battery charge
-    RFM 69 HCW works stable up to 2.5 volts (sometimes it can work up to 2.0V). Assume 2.5 V is 0% and 1023 is 100% battery charge
-    3.3V ~ 1023
-    3.0V ~ 900
-    2.5V ~ 750
-    2.0V ~ 600
-  */
+  /*  Devider values R1 = 3M, R2 = 470K divider across batteries
+   *  Vsource = Vout * R2 / (R2+R1)   = 7,383 * Vout;
+   *  we use internal refference voltage of 1.1 Volts. Means 1023 Analg Input values  = 1.1Volts
+   *  5.5 is dead bateries. 6.3 or more - is 100% something in between is working range.
+   */
 
-  //Serial.print(F("sensorValue: ")); Serial.println(sensorValue);
-#ifdef MY_IS_RFM69HW
-  int batteryPcnt = (sensorValue - 750) / 1.5;
-#else
-  int batteryPcnt = (sensorValue - 600) / 3;
-#endif
+  float voltage = sensorValue*0.001074*7.38255 ;
+  if (voltage > 6.3)  batteryPcnt = 100;
+  else if (voltage < 5.5) batteryPcnt = 0;
+  else batteryPcnt = (int)((voltage - 5.5) / 0.008) ;
 
-  batteryPcnt = batteryPcnt > 0 ? batteryPcnt : 0; // Cut down negative values. Just in case the battery goes below 2V (2.5V) and the node still working.
-  batteryPcnt = batteryPcnt < 100 ? batteryPcnt : 100; // Cut down more than "100%" values. In case of ADC fluctuations.
+  Serial.print(F("voltage ")); Serial.println(voltage);
 
-  float volts = (batteryPcnt * 13.0 + 2000.0) / 1000.0;
-  Serial.print(F("V=")); Serial.println(volts);
-
+  if (oldBatteryPcnt != batteryPcnt ) {
+    sendBatteryLevel(batteryPcnt);
+    oldBatteryPcnt = batteryPcnt;
+  }
+  
   if (oldBatteryPcnt != batteryPcnt ) {
     // Power up radio after sleep
     sendBatteryLevel(batteryPcnt);
-    send(msgBatt.set(volts, 2));
+    send(msgBatt.set(voltage, 2));
     oldBatteryPcnt = batteryPcnt;
   }
   //------------------BATTERY REPORTING END
@@ -261,7 +256,6 @@ void pressure_report() {
   char UVI_Si1132[10];
   char VIS_Si1132[10];
   char IR_Si1132[10];
-
   //Serial.print(F("UV")); Serial.println(si1132.readUV());
   //Serial.print(F("VIS"));Serial.println(si1132.readVisible());
   //Serial.print(F("IR"));Serial.println(Si1132IR);
@@ -281,7 +275,6 @@ void pressure_report() {
   Serial.print(F("UV=")); Serial.println(Si1132UVIndex);
   Serial.print(F("VIS="));Serial.println(Si1132Visible);
   Serial.print(F("IR="));Serial.println(si1132.readIR());
-
   long uvIndexDelta = (long)(Si1132UVIndex - oldSi1132UVIndex);
   //Serial.print(F("abs(UVIndex - old UVindex)=")); Serial.print(abs(z)); Serial.print(F("; UVIndex=")); Serial.print(Si1132UVIndex); Serial.print(F("; old UVIndex=")); Serial.println(oldSi1132UVIndex);
   dtostrf(Si1132UVIndex, 4, 2, UVI_Si1132);
@@ -290,7 +283,6 @@ void pressure_report() {
     oldSi1132UVIndex = Si1132UVIndex;
   }
   wait(5);
-
   long visDelta = (long)(Si1132Visible - oldSi1132Visible);
   //Serial.print(F("abs(VisibleSi1132 - old)=")); Serial.print(abs(y)); Serial.print(F("; VisibleSi1132=")); Serial.print(Si1132Visible); Serial.print(F("; old VisibleSi1132=")); Serial.println(oldSi1132Visible);
   dtostrf(Si1132Visible, 5, 0, VIS_Si1132);
@@ -299,7 +291,6 @@ void pressure_report() {
     oldSi1132Visible = Si1132Visible;
   }
   wait(5);
-
   long irDelta = (long)(Si1132IR - oldSi1132IR);
   //Serial.print(F("abs(IRSi1132 - old)=")); Serial.print(abs(x)); Serial.print(F("; IRSi1132=")); Serial.print(Si1132IR); Serial.print(F("; old IRSi1132 =")); Serial.println(oldSi1132IR);
   dtostrf(Si1132IR, 5, 0, IR_Si1132);
@@ -310,7 +301,6 @@ void pressure_report() {
   wait(5);
   //send (msg_ir.set(Si1132IR));
   }
-
 */
 void swarm_report()
 {

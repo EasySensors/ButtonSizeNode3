@@ -21,7 +21,6 @@
 // Enable debug prints to serial monitor
 #define MY_DEBUG
 
-#include <MemoryFree.h>
 #include <avr/wdt.h>
 #ifdef __AVR__
   #include <avr/power.h>
@@ -31,19 +30,15 @@
 #define MY_RADIO_RFM69
 
 // if you use MySensors 2.0 use this style 
-//#define MY_RFM69_FREQUENCY   RF69_433MHZ
-//#define MY_RFM69_FREQUENCY   RF69_868MHZ
-//#define MY_RFM69_FREQUENCY   RF69_915MHZ
-
-
-#define MY_RFM69_FREQUENCY   RFM69_433MHZ
-//#define MY_RFM69_FREQUENCY   RFM69_868MHZ
+//#define MY_RFM69_FREQUENCY   RFM69_433MHZ
+#define MY_RFM69_FREQUENCY   RFM69_868MHZ
+//#define MY_RFM69_FREQUENCY   RFM69_915MHZ
 
 // Comment it out for CW  version radio.
 //#define MY_IS_RFM69HW
 
 // Comment it out for Auto Node ID #
-#define MY_NODE_ID 0xA9
+#define MY_NODE_ID 0x80
 
 // Avoid battery drain if Gateway disconnected and the node sends more than MY_TRANSPORT_STATE_RETRIES times message.
 #define MY_TRANSPORT_UPLINK_CHECK_DISABLED
@@ -100,13 +95,44 @@ static int16_t oldHumdty = 0, humdty;
 static int16_t oldTemp = 0, temp;
 
 
+void battery_report() {
+  //---------------BATTERY REPORTING START
+  static int oldBatteryPcnt = 0;
+  int batteryPcnt;
+
+  // Get the battery Voltage
+  int sensorValue = analogRead(BATTERY_SENSE_PIN);
+  /*  Devider values R1 = 3M, R2 = 470K divider across batteries
+   *  Vsource = Vout * R2 / (R2+R1)   = 7,383 * Vout;
+   *  we use internal refference voltage of 1.1 Volts. Means 1023 Analg Input values  = 1.1Volts
+   *  5.5 is dead bateries. 6.3 or more - is 100% something in between is working range.
+   */
+
+  float voltage = sensorValue*0.001074*7.38255 ;
+  if (voltage > 6.3)  batteryPcnt = 100;
+  else if (voltage < 5.5) batteryPcnt = 0;
+  else batteryPcnt = (int)((voltage - 5.5) / 0.008) ;
+
+  Serial.print(F("voltage ")); Serial.println(voltage);
+
+  if (oldBatteryPcnt != batteryPcnt ) {
+    sendBatteryLevel(batteryPcnt);
+    oldBatteryPcnt = batteryPcnt;
+  }
+  
+
+  //------------------BATTERY REPORTING END
+}
+
+
 void swarm_report()
 {
   static int oldBatteryPcnt = 0;
   char humiditySi7021[10];
   char tempSi7021[10];
   char visualLight[10];
-
+  
+  battery_report();
 
   lightMeter.begin(BH1750::ONE_TIME_LOW_RES_MODE); // need for correct wake up
   lux = lightMeter.readLightLevel();// Get Lux value
@@ -143,32 +169,11 @@ void swarm_report()
     oldTemp = temp;
   }
 
-  // Get the battery Voltage
-  int sensorValue = analogRead(BATTERY_SENSE_PIN);
-  /* 1M, 470K divider across batteries
-   * 610 ~ 100 % is close to 6.1 V
-   * 400 ~ 0 % is close to 4V
-   */
-
-#ifdef  MY_IS_RFM69HW
-  int batteryPcnt = (sensorValue - 460)  / 1.4; // RFM 69 HCW  dies when 2 batteries combined are 4.6 Volts
-#else
-  int batteryPcnt = (sensorValue - 400)  / 2; // RFM 69 CW  dies when 2 batteries combined are 4 Volts
-#endif
-
-  
-  batteryPcnt = batteryPcnt > 0 ? batteryPcnt:0; // Cut down negative values. Just in case the battery goes below 4V and the node still working. 
-  batteryPcnt = batteryPcnt < 100 ? batteryPcnt:100; // Cut down more than "100%" values. In case of ADC fluctuations. 
-
-  if (oldBatteryPcnt != batteryPcnt ) {
-    wait(100);
-    sendBatteryLevel(batteryPcnt);
-    oldBatteryPcnt = batteryPcnt;
-  }
 
 }
 
 void before() {
+  analogReference(INTERNAL);
   //No need watch dog enabled in case of battery power.
   //wdt_enable(WDTO_4S);
   wdt_disable();
@@ -212,4 +217,3 @@ void loop(){
   _flash.sleep();
   sleep(300000);
 }
-

@@ -622,16 +622,11 @@ void presentation()
 
 void loop()
 {
-  
-    Serial.print("freeMemory()=");
-    Serial.println(freeMemory());
-
   //No need watch dog in case of battery power.
   //wdt_reset();
 
   uint8_t GyroPinValue = digitalRead(GYRO_PIN);
   uint8_t magnetPinValue = digitalRead(MAGNET_PIN);
-  
 
   /*This section needs to be execuded if JDEC EPROM needs to be acceses in the loop()  
   noInterrupts();
@@ -653,9 +648,6 @@ void loop()
         #endif
       blinkSensorLed(1);
   } else if (flagIntGyro) {flagIntGyro = false;}
-
-  
-
 
   if ( flagIntMagnet && magnetPinValue != prevoiusMagnetPinValue )  {
     
@@ -690,11 +682,6 @@ void loop()
   
   // Go sleep for some milliseconds
 
-
-    Serial.print("freeMemory()=");
-    Serial.println(freeMemory());
-
-  
   if ( !flagIntMagnet && !flagIntGyro ) { // make sure no changes in Gyro and magnet sensor happened while we were sending reports. 
       
       //sleep(0); // currently only 0 value can be set. if any other number  set then the Gyro and the Magnet sensor interrupts will be ignired. 
@@ -703,9 +690,6 @@ void loop()
       // Doesnot support smart sleep, FOTA nor TransportReady. just sleeps miliseconds provided with first parameter. 
       hwSleep2(60000, &flagIntGyro, &flagIntMagnet); 
   }
-
-
-
 }
 
 

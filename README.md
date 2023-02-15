@@ -1,7 +1,7 @@
 <div align="right">
 	<br>
 	<a href="https://www.aliexpress.com/item/1005005118146988.html">
-		<img src="docs/ali_buy_btn.png"  alt="Click to buy from Aliexpress">
+		<img src="pics/ali_buy_btn.png"  alt="Click to buy from Aliexpress">
 	</a>
 	<br>
 </div>

@@ -4,7 +4,7 @@
 		<img src="docs/ali_buy_btn.png"  alt="Click to buy from Aliexpress">
 	</a>
 	<br>
-</di
+</div>
 
 ## Full Version ##
 ![The Button Size Node 3](https://github.com/EasySensors/ButtonSizeNode3/blob/master/pics/BS3_TOP.jpg?raw=true)

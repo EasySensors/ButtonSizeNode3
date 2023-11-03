@@ -6,6 +6,8 @@
 	<br>
 </div>
 
+<a href="https://www.tindie.com/products/17981/?ref=offsite_badges&utm_source=sellers_easySensors&utm_medium=badges&utm_campaign=badge_large"><img src="https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-larges.png" alt="I sell on Tindie" width="200" height="104"></a>
+
 ## Full Version ##
 ![The Button Size Node 3](https://github.com/EasySensors/ButtonSizeNode3/blob/master/pics/BS3_TOP.jpg?raw=true)
 
